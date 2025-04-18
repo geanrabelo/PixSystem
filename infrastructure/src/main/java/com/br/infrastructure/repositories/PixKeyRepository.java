@@ -1,5 +1,6 @@
 package com.br.infrastructure.repositories;
 
+import com.br.core.entities.PixKeyEntity;
 import com.br.core.enums.KeyType;
 import com.br.infrastructure.domain.Account;
 import com.br.infrastructure.domain.PixKey;
@@ -16,6 +17,8 @@ public interface PixKeyRepository extends JpaRepository<PixKey, UUID> {
     boolean existsByKeyValue(String keyValue);
 
     boolean existsByKeyType(KeyType keyType);
+
+    Optional<PixKey> findByKeyValue(String keyValue);
 
     @Query("SELECT p FROM pixKey p WHERE p.account.id = :accountId")
     List<PixKey> findByAccountId(@Param("accountId") UUID accountId);

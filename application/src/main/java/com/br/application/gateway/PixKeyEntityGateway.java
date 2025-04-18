@@ -21,6 +21,8 @@ public interface PixKeyEntityGateway {
 
     List<PixKeyEntity> findByAccount(AccountEntity accountEntity);
 
+    PixKeyEntity findByKeyValue(String keyValue);
+
     PixKeyEntity findById(UUID id);
 
     void delete(UUID id);

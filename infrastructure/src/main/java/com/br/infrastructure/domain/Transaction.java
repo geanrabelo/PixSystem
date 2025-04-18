@@ -22,25 +22,27 @@ public class Transaction {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "senderId")
+    @JoinColumn(name = "sender_Id")
     private Account senderAccount;
 
     @ManyToOne
-    @JoinColumn(name = "receiverId")
+    @JoinColumn(name = "receiver_Id")
     private PixKey receiverKey;
 
     private BigDecimal amount;
 
+    @Column(name = "transaction_enum")
     @Enumerated(EnumType.STRING)
     private TransactionEnum transactionEnum;
 
     private LocalDateTime timestamp;
 
+    @Column(name = "end_to_end_id")
     private String endToEndId;
 
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "settlementId")
+    @JoinColumn(name = "settlement_Id")
     private Settlement settlement;
 }

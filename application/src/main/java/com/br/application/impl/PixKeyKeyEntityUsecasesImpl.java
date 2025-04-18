@@ -53,6 +53,11 @@ public class PixKeyKeyEntityUsecasesImpl implements PixKeyEntityUsecases {
     }
 
     @Override
+    public PixKeyEntity findByKeyValue(String keyValue) {
+        return pixKeyEntityGateway.findByKeyValue(keyValue);
+    }
+
+    @Override
     public void delete(UUID id) {
         pixKeyEntityGateway.delete(id);
     }

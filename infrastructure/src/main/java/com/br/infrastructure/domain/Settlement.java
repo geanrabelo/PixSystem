@@ -25,13 +25,17 @@ public class Settlement {
     @OneToMany(mappedBy = "settlement")
     private List<Transaction> transactionList;
 
+    @Column(name = "settlement_date")
     private LocalDate settlementDate;
 
+    @Column(name = "total_amount")
     private BigDecimal totalAmount;
 
+    @Column(name = "settlement_enum")
     @Enumerated(EnumType.STRING)
     private SettlementEnum settlementEnum;
 
+    @Column(name = "batch_id")
     private String batchId;
 
 }

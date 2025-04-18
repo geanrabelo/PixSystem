@@ -11,6 +11,7 @@ import com.br.infrastructure.dto.account.AccountJpaDTO;
 import com.br.infrastructure.repositories.AccountRepository;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,6 +32,18 @@ public class AccountEntityGatewayImpl implements AccountEntityGateway {
             throw new AccountNumberAlreadyExists(EnumCode.ACC0001.getMessage());
         }
     }
+
+    @Override
+    public void saveData(UUID id, BigDecimal balance) {
+        if(existsById(id)){
+            Account account = accountRepository.getReferenceById(id);
+            account.setBalance(balance);
+            accountRepository.save(account);
+        }else{
+            throw new AccountIdNotFound(EnumCode.ACC0001.getMessage());
+        }
+    }
+
 
     @Override
     public List<AccountEntity> findAll() {

@@ -23,5 +23,7 @@ public interface PixKeyEntityUsecases {
 
     PixKeyEntity findById(UUID id);
 
+    PixKeyEntity findByKeyValue(String keyValue);
+
     void delete(UUID id);
 }

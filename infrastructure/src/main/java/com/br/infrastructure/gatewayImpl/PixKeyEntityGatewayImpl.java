@@ -5,13 +5,16 @@ import com.br.core.entities.AccountEntity;
 import com.br.core.entities.PixKeyEntity;
 import com.br.core.enums.EnumCode;
 import com.br.core.exceptions.PixKeyIdNotFound;
+import com.br.core.exceptions.PixKeyReceiverNotFound;
 import com.br.core.exceptions.PixKeyValueAlreadyExists;
+import com.br.infrastructure.domain.PixKey;
 import com.br.infrastructure.dto.pixKey.PixKeyDatabaseToEntityDTO;
 import com.br.infrastructure.dto.pixKey.PixKeyJpaDTO;
 import com.br.infrastructure.repositories.PixKeyRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -57,6 +60,15 @@ public class PixKeyEntityGatewayImpl implements PixKeyEntityGateway {
         return pixKeyRepository.findByAccountId(accountEntity.getId())
                 .stream()
                 .map(p -> new PixKeyDatabaseToEntityDTO(p).fromJpaForEntity()).toList();
+    }
+
+    @Override
+    public PixKeyEntity findByKeyValue(String keyValue) {
+        if(pixKeyRepository.existsByKeyValue(keyValue)){
+            Optional<PixKey> pixKey = pixKeyRepository.findByKeyValue(keyValue);
+            return new PixKeyDatabaseToEntityDTO(pixKey.get()).fromJpaForEntity();
+        }
+        throw new PixKeyReceiverNotFound(EnumCode.PXK0002.getMessage());
     }
 
     @Override

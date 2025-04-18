@@ -42,9 +42,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(PixKeyIdNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponse pixKeyIdNotFound(PixKeyIdNotFound pixKeyIdNotFound){
+    public ErrorResponse pixKeyIdNotFoundHandler(PixKeyIdNotFound pixKeyIdNotFound){
         return ErrorResponse.notFound(pixKeyIdNotFound.getMessage());
     }
 
-    @ExceptionHandler(PixKeyValueAlreadyExists)
+    @ExceptionHandler(PixKeyReceiverNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse pixKeyReceiverNotFoundHandler(PixKeyReceiverNotFound pixKeyReceiverNotFound){
+        return ErrorResponse.notFound(pixKeyReceiverNotFound.getMessage());
+    }
 }

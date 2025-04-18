@@ -4,6 +4,7 @@ import com.br.application.gateway.AccountEntityGateway;
 import com.br.core.entities.AccountEntity;
 import com.br.usecases.AccountEntityUsecases;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,6 +20,12 @@ public class AccountEntityUsecasesImpl implements AccountEntityUsecases {
     public void register(AccountEntity accountEntity) {
         accountEntityGateway.register(accountEntity);
     }
+
+    @Override
+    public void saveData(UUID id, BigDecimal balance) {
+        accountEntityGateway.saveData(id, balance);
+    }
+
 
     @Override
     public List<AccountEntity> findAll() {
