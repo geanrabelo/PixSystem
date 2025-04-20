@@ -5,6 +5,8 @@ import com.br.core.entities.TransactionEntity;
 import com.br.usecases.TransactionEntityUsecases;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.UUID;
 
 public class TransactionEntityUsecasesImpl implements TransactionEntityUsecases {
 
@@ -27,6 +29,16 @@ public class TransactionEntityUsecasesImpl implements TransactionEntityUsecases 
     @Override
     public boolean validateKey(String key) {
         return transactionEntityGateway.validateKey(key);
+    }
+
+    @Override
+    public TransactionEntity findById(UUID id) {
+        return transactionEntityGateway.findById(id);
+    }
+
+    @Override
+    public List<TransactionEntity> findAll() {
+        return transactionEntityGateway.findAll();
     }
 
 }

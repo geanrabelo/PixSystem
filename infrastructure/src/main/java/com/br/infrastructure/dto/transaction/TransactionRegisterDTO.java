@@ -7,5 +7,6 @@ import java.math.BigDecimal;
 public record TransactionRegisterDTO(String senderAccountId,
                                      String receiverKey,
                                      BigDecimal amount,
-                                     String description) {
+                                     String description,
+                                     String settlementId) {
 }

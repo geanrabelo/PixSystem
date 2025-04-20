@@ -1,10 +1,7 @@
 package com.br.infrastructure.dto.transaction;
 
 import com.br.core.entities.TransactionEntity;
-import com.br.infrastructure.domain.Account;
-import com.br.infrastructure.domain.PixKey;
-import com.br.infrastructure.domain.Transaction;
-import com.br.infrastructure.domain.User;
+import com.br.infrastructure.domain.*;
 import com.br.infrastructure.dto.account.AccountJpaDTO;
 
 public record TransactionJpaDTO(TransactionEntity transactionEntity) {
@@ -35,7 +32,10 @@ public record TransactionJpaDTO(TransactionEntity transactionEntity) {
                 .timestamp(transactionEntity.getTimestamp())
                 .endToEndId(transactionEntity.getEndToEndId())
                 .description(transactionEntity.getDescription())
-                //.settlement()
+                .settlement(Settlement
+                        .builder()
+                        .id(transactionEntity.getSettlementEntity().getId())
+                        .build())
                 .build();
     }
 }

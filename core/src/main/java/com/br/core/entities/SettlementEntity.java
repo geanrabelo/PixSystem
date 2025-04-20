@@ -10,12 +10,12 @@ import java.util.UUID;
 
 public class SettlementEntity {
 
-    public SettlementEntity(List<TransactionEntity> transactionEntityList){
-        this.id = UUID.randomUUID();
+    public SettlementEntity(UUID id, List<TransactionEntity> transactionEntityList, LocalDate settlementDate, BigDecimal totalAmount, SettlementEnum settlementEnum, String batchId) {
+        this.id = id;
         this.transactionEntityList = transactionEntityList;
-        this.settlementDate = LocalDate.now();
-        this.totalAmount = transactionEntityList.stream().map(TransactionEntity::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
-        this.settlementEnum = null;
+        this.settlementDate = settlementDate;
+        this.totalAmount = totalAmount;
+        this.settlementEnum = SettlementEnum.SETTLED;
         this.batchId = UUID.randomUUID().toString();
     }
 
@@ -40,6 +40,7 @@ public class SettlementEntity {
 
     public void setTransactionEntityList(List<TransactionEntity> transactionEntityList) {
         this.transactionEntityList = transactionEntityList;
+        this.totalAmount = transactionEntityList.stream().map(TransactionEntity::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public LocalDate getSettlementDate() {
@@ -116,7 +117,7 @@ public class SettlementEntity {
         }
 
         public SettlementEntity build(){
-            return new SettlementEntity(this.transactionEntityList);
+            return new SettlementEntity(this.id, this.transactionEntityList, this.settlementDate, this.totalAmount, this.settlementEnum, this.batchId);
         }
     }
 }

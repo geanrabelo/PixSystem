@@ -8,7 +8,9 @@ public enum EnumCode {
     ACC0002("Account error -Account not have balance enough for transaction"),
     PXK0000("Pix Key error - Pix Key find by id not found"),
     PXK0001("Pix Key error - This keyValue already exists in database"),
-    PXK0002("Pix key error - This keyValue not exists");
+    PXK0002("Pix key error - This keyValue not exists"),
+    TRS0000("Transaction error - Transaction find by id not found"),
+    SLT0000("Settlement error - Settlement find by id not found");
 
 
 

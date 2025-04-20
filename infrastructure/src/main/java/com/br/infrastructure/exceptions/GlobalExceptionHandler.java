@@ -57,4 +57,15 @@ public class GlobalExceptionHandler {
     public ErrorResponse accountNotHaveBalanceEnoughHandler(AccountNotHaveBalanceEnough accountNotHaveBalanceEnough){
         return ErrorResponse.invalid(accountNotHaveBalanceEnough.getMessage());
     }
+
+    @ExceptionHandler(TransactionIdNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse transactionIdNotFoundHandler(TransactionIdNotFound transactionIdNotFound){
+        return ErrorResponse.notFound(transactionIdNotFound.getMessage());
+    }
+
+    @ExceptionHandler(SettlementIdNotFound.class)
+    public ErrorResponse settlementIdNotFoundHandler(SettlementIdNotFound settlementIdNotFound){
+        return ErrorResponse.notFound(settlementIdNotFound.getMessage());
+    }
 }
