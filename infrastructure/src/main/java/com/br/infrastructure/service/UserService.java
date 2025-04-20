@@ -33,7 +33,8 @@ public class UserService {
                 u.getEmails(),
                 u.getPhone(),
                 u.getCreatedAt(),
-                u.getActive()
+                u.getActive(),
+                u.getAccountEntityList().stream().map(a -> a.getId()).toList()
         )).toList();
     }
 
@@ -46,7 +47,8 @@ public class UserService {
                 userEntity.getEmails(),
                 userEntity.getPhone(),
                 userEntity.getCreatedAt(),
-                userEntity.getActive()
+                userEntity.getActive(),
+                userEntity.getAccountEntityList().stream().map(a -> a.getId()).toList()
         );
     }
 
@@ -72,7 +74,8 @@ public class UserService {
                 userUpdated.getEmails(),
                 userUpdated.getPhone(),
                 userUpdated.getCreatedAt(),
-                userUpdated.getActive()
+                userUpdated.getActive(),
+                userUpdated.getAccountEntityList().stream().map(a -> a.getId()).toList()
         );
     }
 }

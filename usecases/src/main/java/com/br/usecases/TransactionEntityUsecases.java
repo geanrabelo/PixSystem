@@ -11,6 +11,4 @@ public interface TransactionEntityUsecases {
     boolean validateAmount(BigDecimal amount);
 
     boolean validateKey(String key);
-
-    void processReceivePix(TransactionEntity transactionEntity);
 }

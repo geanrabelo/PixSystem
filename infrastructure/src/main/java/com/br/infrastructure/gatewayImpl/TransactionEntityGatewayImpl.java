@@ -37,9 +37,4 @@ public class TransactionEntityGatewayImpl implements TransactionEntityGateway {
     public boolean validateKey(String key) {
         return !pixKeyEntityUsecases.validateKeyValue(key);
     }
-
-    @Override
-    public void processReceivePix(TransactionEntity transactionEntity) {
-
-    }
 }

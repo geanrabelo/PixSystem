@@ -29,8 +29,4 @@ public class TransactionEntityUsecasesImpl implements TransactionEntityUsecases 
         return transactionEntityGateway.validateKey(key);
     }
 
-    @Override
-    public void processReceivePix(TransactionEntity transactionEntity) {
-        transactionEntityGateway.processReceivePix(transactionEntity);
-    }
 }

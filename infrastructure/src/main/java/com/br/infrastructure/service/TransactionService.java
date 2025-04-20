@@ -4,8 +4,8 @@ import com.br.core.entities.AccountEntity;
 import com.br.core.entities.PixKeyEntity;
 import com.br.core.entities.TransactionEntity;
 import com.br.core.enums.EnumCode;
+import com.br.core.exceptions.AccountNotHaveBalanceEnough;
 import com.br.core.exceptions.PixKeyReceiverNotFound;
-import com.br.infrastructure.domain.PixKey;
 import com.br.infrastructure.dto.transaction.TransactionRegisterDTO;
 import com.br.usecases.AccountEntityUsecases;
 import com.br.usecases.PixKeyEntityUsecases;
@@ -46,6 +46,8 @@ public class TransactionService {
             accountEntityUsecases.saveData(accountEntity.getId(), newBalanceSender);
             accountEntityUsecases.saveData(pixKeyEntity.getAccountEntity().getId(), newBalanceReceiver);
             return "PixKey Registered successfully";
+        } else if (!verificationBalanceSuficient(accountEntity.getBalance(), transactionRegisterDTO.amount())) {
+            throw new AccountNotHaveBalanceEnough(EnumCode.ACC0002.getMessage());
         }
         throw new PixKeyReceiverNotFound(EnumCode.PXK0002.getMessage());
     }

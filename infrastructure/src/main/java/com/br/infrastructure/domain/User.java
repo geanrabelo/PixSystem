@@ -1,6 +1,8 @@
 package com.br.infrastructure.domain;
 
 import com.br.core.entities.UserEntity;
+import com.br.infrastructure.dto.account.AccountJpaDTO;
+import com.br.infrastructure.dto.user.UserJpaDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -45,6 +47,6 @@ public class User {
         this.phone = userEntity.getPhone();
         this.createdAt = userEntity.getCreatedAt();
         this.active = userEntity.getActive();
-        this.accountList = null;
+        this.accountList = userEntity.getAccountEntityList().stream().map(a -> new AccountJpaDTO(a).toAccountWithoutUser()).toList();
     }
 }

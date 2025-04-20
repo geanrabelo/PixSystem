@@ -12,6 +12,4 @@ public interface TransactionEntityGateway {
 
     boolean validateKey(String key);
 
-    void processReceivePix(TransactionEntity transactionEntity);
-
 }

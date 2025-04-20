@@ -24,9 +24,9 @@ public class TransactionEntity {
         this.senderAccount = senderAccount;
         this.receiverKey = receiverKey;
         this.amount = amount;
-        this.transactionEnum = transactionEnum;
-        this.timestamp = timestamp;
-        this.endToEndId = endToEndId;
+        this.transactionEnum = TransactionEnum.COMPLETED;
+        this.timestamp = LocalDateTime.now();
+        this.endToEndId = UUID.randomUUID().toString();
         this.description = description;
         this.settlementEntity = settlementEntity;
     }

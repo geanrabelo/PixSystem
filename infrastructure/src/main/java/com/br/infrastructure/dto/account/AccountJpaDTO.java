@@ -18,4 +18,16 @@ public record AccountJpaDTO(AccountEntity accountEntity) {
                 .createdAt(accountEntity.getCreatedAt())
                 .build();
     }
+
+    public Account toAccountWithoutUser(){
+        return Account.builder()
+                .id(accountEntity.getId())
+                .user(null)
+                .accountNumber(accountEntity.getAccountNumber())
+                .agency(accountEntity.getAgency())
+                .balance(accountEntity.getBalance())
+                .accountType(accountEntity.getAccountType())
+                .createdAt(accountEntity.getCreatedAt())
+                .build();
+    }
 }

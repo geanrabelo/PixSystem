@@ -51,4 +51,10 @@ public class GlobalExceptionHandler {
     public ErrorResponse pixKeyReceiverNotFoundHandler(PixKeyReceiverNotFound pixKeyReceiverNotFound){
         return ErrorResponse.notFound(pixKeyReceiverNotFound.getMessage());
     }
+
+    @ExceptionHandler(AccountNotHaveBalanceEnough.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse accountNotHaveBalanceEnoughHandler(AccountNotHaveBalanceEnough accountNotHaveBalanceEnough){
+        return ErrorResponse.invalid(accountNotHaveBalanceEnough.getMessage());
+    }
 }

@@ -12,14 +12,14 @@ import java.util.UUID;
 public record PixKeyDetailsDTO(UUID id,
                                String keyValue,
                                KeyType keyType,
-                               AccountDetailsDTO account,
+                               UUID accountId,
                                LocalDateTime createdAt,
                                Boolean active) {
     public PixKeyDetailsDTO (PixKeyEntity pixKeyEntity){
         this(pixKeyEntity.getId(),
                 pixKeyEntity.getKeyValue(),
                 pixKeyEntity.getKeyType(),
-                new AccountDetailsDTO(pixKeyEntity.getAccountEntity()),
+                pixKeyEntity.getAccountEntity().getId(),
                 pixKeyEntity.getCreatedAt(),
                 pixKeyEntity.getActive()
                 );
