@@ -2,8 +2,10 @@ package com.br.application.impl;
 
 import com.br.application.gateway.SettlementEntityGateway;
 import com.br.core.entities.SettlementEntity;
+import com.br.core.entities.TransactionEntity;
 import com.br.usecases.SettlementEntityUsecases;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,6 +29,11 @@ public class SettlementEntityUsecasesImpl implements SettlementEntityUsecases {
     @Override
     public List<SettlementEntity> findAll() {
         return settlementEntityGateway.findAll();
+    }
+
+    @Override
+    public void updateAmount(BigDecimal value, UUID id) {
+        settlementEntityGateway.updateAmount(value, id);
     }
 
 

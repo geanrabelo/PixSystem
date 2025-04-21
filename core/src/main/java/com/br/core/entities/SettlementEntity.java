@@ -38,9 +38,8 @@ public class SettlementEntity {
         return transactionEntityList;
     }
 
-    public void setTransactionEntityList(List<TransactionEntity> transactionEntityList) {
-        this.transactionEntityList = transactionEntityList;
-        this.totalAmount = transactionEntityList.stream().map(TransactionEntity::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
+    public void setTransactionEntityList(List<TransactionEntity> transactionEntityList5) {
+        this.transactionEntityList = transactionEntityList5;
     }
 
     public LocalDate getSettlementDate() {

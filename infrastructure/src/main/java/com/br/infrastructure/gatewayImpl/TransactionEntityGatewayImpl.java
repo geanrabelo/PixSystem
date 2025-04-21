@@ -8,8 +8,8 @@ import com.br.infrastructure.domain.Transaction;
 import com.br.infrastructure.dto.transaction.TransactionDatabaseToEntityDTO;
 import com.br.infrastructure.dto.transaction.TransactionJpaDTO;
 import com.br.infrastructure.repositories.TransactionRepository;
-import com.br.usecases.AccountEntityUsecases;
 import com.br.usecases.PixKeyEntityUsecases;
+import com.br.usecases.SettlementEntityUsecases;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

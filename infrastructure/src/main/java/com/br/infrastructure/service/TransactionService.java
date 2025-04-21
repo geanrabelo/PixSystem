@@ -57,6 +57,7 @@ public class TransactionService {
             BigDecimal newBalanceReceiver = pixKeyEntity.getAccountEntity().getBalance().add(transactionRegisterDTO.amount());
             accountEntityUsecases.saveData(accountEntity.getId(), newBalanceSender);
             accountEntityUsecases.saveData(pixKeyEntity.getAccountEntity().getId(), newBalanceReceiver);
+            settlementEntityUsecases.updateAmount(transactionRegisterDTO.amount(), UUID.fromString(transactionRegisterDTO.settlementId()));
             return "PixKey Registered successfully";
         } else if (!verificationBalanceSuficient(accountEntity.getBalance(), transactionRegisterDTO.amount())) {
             throw new AccountNotHaveBalanceEnough(EnumCode.ACC0002.getMessage());

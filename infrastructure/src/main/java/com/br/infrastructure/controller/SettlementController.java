@@ -1,5 +1,6 @@
 package com.br.infrastructure.controller;
 
+import com.br.core.exceptions.SettlementIdNotFound;
 import com.br.infrastructure.dto.MessageDTO;
 import com.br.infrastructure.dto.settlement.SettlementDetailsDTO;
 import com.br.infrastructure.dto.settlement.SettlementRegisterDTO;
