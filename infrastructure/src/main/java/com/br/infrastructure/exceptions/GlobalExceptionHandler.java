@@ -65,7 +65,20 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(SettlementIdNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse settlementIdNotFoundHandler(SettlementIdNotFound settlementIdNotFound){
         return ErrorResponse.notFound(settlementIdNotFound.getMessage());
+    }
+
+    @ExceptionHandler(RefundHasAlreadyBeenProcessed.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponse refundHasAlreadyBeenProcessedHandler(RefundHasAlreadyBeenProcessed hasAlreadyBeenProcessed){
+        return ErrorResponse.conflict(hasAlreadyBeenProcessed.getMessage());
+    }
+
+    @ExceptionHandler(RefundIdNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse refundIdNotFoundHandler(RefundIdNotFound refundIdNotFound){
+        return ErrorResponse.notFound(refundIdNotFound.getMessage());
     }
 }

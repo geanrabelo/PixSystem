@@ -13,8 +13,10 @@ public class NotificationEntityGatewayImpl implements NotificationEntityGateway 
         this.notificationRepository = notificationRepository;
     }
 
+
+
     @Override
-    public void sendNotification(String phone) {
+    public void sendNotification(String email) {
 
     }
 }

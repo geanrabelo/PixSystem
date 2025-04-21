@@ -8,14 +8,14 @@ import java.util.UUID;
 
 public class RefundEntity {
 
-    public RefundEntity(TransactionEntity transactionEntity, BigDecimal amount, String reason){
-        this.id = UUID.randomUUID();
+    public RefundEntity(UUID id, TransactionEntity transactionEntity, BigDecimal amount, String reason, RefundEnum refundEnum, LocalDateTime createdAt, LocalDateTime processedAt) {
+        this.id = id;
         this.transactionEntity = transactionEntity;
         this.amount = amount;
         this.reason = reason;
-        this.refundEnum = null;
-        this.createdAt = LocalDateTime.now();
-        this.processedAt = null;
+        this.refundEnum = refundEnum;
+        this.createdAt = createdAt;
+        this.processedAt = processedAt;
     }
 
     private UUID id;
@@ -133,7 +133,7 @@ public class RefundEntity {
         }
 
         public RefundEntity build(){
-            return new RefundEntity(this.transactionEntity, this.amount, this.reason);
+            return new RefundEntity(this.id, this.transactionEntity, this.amount, this.reason, this.refundEnum, this.createdAt, this.processedAt);
         }
     }
 }

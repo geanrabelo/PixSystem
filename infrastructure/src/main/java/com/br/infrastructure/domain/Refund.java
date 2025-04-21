@@ -22,7 +22,7 @@ public class Refund {
     private UUID id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "transactionId")
+    @JoinColumn(name = "transaction_id")
     private Transaction transaction;
 
     private BigDecimal amount;
@@ -30,9 +30,12 @@ public class Refund {
     private String reason;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "refund_enum")
     private RefundEnum refundEnum;
 
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @Column(name = "processed_at")
     private LocalDateTime processedAt;
 }
