@@ -17,6 +17,10 @@ public interface PixKeyEntityUsecases {
 
     boolean existsTransactions();
 
+    void active(UUID id);
+
+    void disable(UUID id);
+
     List<PixKeyEntity> findAll();
 
     List<PixKeyEntity> findByAccount(AccountEntity accountEntity);

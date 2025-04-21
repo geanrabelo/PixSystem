@@ -45,6 +45,14 @@ public class PixKeyService {
         return new PixKeyDetailsDTO(pixKeyEntityUsecases.findById(id));
     }
 
+    public void active(UUID id){
+        pixKeyEntityUsecases.active(id);
+    }
+
+    public void disable(UUID id){
+        pixKeyEntityUsecases.disable(id);
+    }
+
     public List<PixKeyDetailsDTO> findByAccountId(UUID id){
         AccountEntity accountEntity = accountEntityUsecases.findById(id);
         List<PixKeyEntity> pixKeyEntityList = pixKeyEntityUsecases.findByAccount(accountEntity);

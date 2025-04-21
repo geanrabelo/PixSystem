@@ -3,6 +3,7 @@ package com.br.infrastructure.gatewayImpl;
 import com.br.application.gateway.TransactionEntityGateway;
 import com.br.core.entities.TransactionEntity;
 import com.br.core.enums.EnumCode;
+import com.br.core.exceptions.PixKeyNotActive;
 import com.br.core.exceptions.TransactionIdNotFound;
 import com.br.infrastructure.domain.Transaction;
 import com.br.infrastructure.dto.transaction.TransactionDatabaseToEntityDTO;
@@ -29,8 +30,10 @@ public class TransactionEntityGatewayImpl implements TransactionEntityGateway {
 
     @Override
     public void sendPix(TransactionEntity transactionEntity) {
-        if(validateKey(transactionEntity.getReceiverKey().getKeyValue())){
+        if(validateKey(transactionEntity.getReceiverKey().getKeyValue()) && transactionEntity.getReceiverKey().getActive()){
             transactionRepository.save(new TransactionJpaDTO(transactionEntity).toTransactionJpa());
+        }else{
+            throw new PixKeyNotActive(EnumCode.PXK0003.getMessage());
         }
     }
 

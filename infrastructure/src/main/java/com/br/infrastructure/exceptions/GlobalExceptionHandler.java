@@ -81,4 +81,10 @@ public class GlobalExceptionHandler {
     public ErrorResponse refundIdNotFoundHandler(RefundIdNotFound refundIdNotFound){
         return ErrorResponse.notFound(refundIdNotFound.getMessage());
     }
+
+    @ExceptionHandler(PixKeyNotActive.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse pixKeyNotActiveHandler(PixKeyNotActive pixKeyNotActive){
+        return ErrorResponse.invalid(pixKeyNotActive.getMessage());
+    }
 }

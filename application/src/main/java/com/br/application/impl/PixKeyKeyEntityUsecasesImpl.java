@@ -38,6 +38,16 @@ public class PixKeyKeyEntityUsecasesImpl implements PixKeyEntityUsecases {
     }
 
     @Override
+    public void active(UUID id) {
+        pixKeyEntityGateway.active(id);
+    }
+
+    @Override
+    public void disable(UUID id) {
+        pixKeyEntityGateway.disable(id);
+    }
+
+    @Override
     public List<PixKeyEntity> findAll() {
         return pixKeyEntityGateway.findAll();
     }

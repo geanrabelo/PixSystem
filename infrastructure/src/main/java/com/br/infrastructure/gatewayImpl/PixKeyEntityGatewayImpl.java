@@ -51,6 +51,26 @@ public class PixKeyEntityGatewayImpl implements PixKeyEntityGateway {
     }
 
     @Override
+    public void active(UUID id) {
+        if(existsById(id)){
+            PixKey pixKeyDB = pixKeyRepository.getReferenceById(id);
+            pixKeyDB.setActive(true);
+        }else{
+            throw new PixKeyIdNotFound(EnumCode.PXK0000.getMessage());
+        }
+    }
+
+    @Override
+    public void disable(UUID id) {
+        if(existsById(id)){
+            PixKey pixKeyDB = pixKeyRepository.getReferenceById(id);
+            pixKeyDB.setActive(false);
+        }else{
+            throw new PixKeyIdNotFound(EnumCode.PXK0000.getMessage());
+        }
+    }
+
+    @Override
     public List<PixKeyEntity> findAll() {
         return pixKeyRepository.findAll().stream().map(p -> new PixKeyDatabaseToEntityDTO(p).fromJpaForEntity()).toList();
     }
