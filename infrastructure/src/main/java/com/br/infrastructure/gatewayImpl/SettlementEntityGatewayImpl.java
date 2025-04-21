@@ -2,7 +2,6 @@ package com.br.infrastructure.gatewayImpl;
 
 import com.br.application.gateway.SettlementEntityGateway;
 import com.br.core.entities.SettlementEntity;
-import com.br.core.entities.TransactionEntity;
 import com.br.core.enums.EnumCode;
 import com.br.core.exceptions.SettlementIdNotFound;
 import com.br.infrastructure.domain.Settlement;
@@ -12,7 +11,6 @@ import com.br.infrastructure.dto.settlement.SettlementJpaDTO;
 import com.br.infrastructure.dto.transaction.TransactionDatabaseToEntityDTO;
 import com.br.infrastructure.repositories.SettlementRepository;
 import com.br.infrastructure.repositories.TransactionRepository;
-import com.br.usecases.TransactionEntityUsecases;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
